@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiMenuAlt3 } from "react-icons/hi";
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
 
@@ -11,22 +12,98 @@ const Navbar = () => {
         setIsOpen(!isOpen);
     }
 
+    const handleCloseMenu = () => {
+        setIsOpen(false);
+    }
+
+    const handleScroll = () => {
+        const sections = ['home', 'services', 'about', 'pricing', 'testimonial'];
+        const scrollPosition = window.scrollY + 100;
+
+        sections.forEach(section => {
+            const element = document.getElementById(section);
+            if(element){
+                const offsetTop = element.offsetTop;
+                const height = element.offsetHeight;
+                if(scrollPosition >= offsetTop && scrollPosition < offsetTop + height){
+                    setActiveSection(section);
+                }
+            }
+        })
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    },[]);
+
+    const handleScrollTo = (targetId) => {
+        const targetElement = document.getElementById(targetId);
+        if(targetElement){
+            window.scrollTo({
+                top:targetElement.offsetTop,
+                behavior:'smooth'
+            })
+        }
+    }
+
     const navLinks = (
         <ul className='font-medium flex flex-col md:flex-row lg:space-x-8 sm:space-x-4 space-x-2 md:space-y-0 p-4 md:p-0'>
             <li>
-                <a href='#home' className={`text-white ${activeSection === 'home' ? 'isActive' : ''}`}>Home</a>
+                <motion.a href='#home' 
+                whileHover={{scale:1.1}} 
+                whileTap={{scale:0.9}}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleCloseMenu();
+                    handleScrollTo('home')
+                }} 
+                
+                className={`text-white ${activeSection === 'home' ? 'isActive' : ''}`}>Home</motion.a>
             </li>
             <li>
-                <a href='#services' className={`text-white ${activeSection === 'services' ? 'isActive' : ''}`}>Services</a>
+                <motion.a href='#services' 
+                whileHover={{scale:1.1}} 
+                whileTap={{scale:0.9}}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleCloseMenu();
+                    handleScrollTo('services')
+                }} 
+                className={`text-white ${activeSection === 'services' ? 'isActive' : ''}`}>Services</motion.a>
             </li>
             <li>
-                <a href='#about' className={`text-white ${activeSection === 'about' ? 'isActive' : ''}`}>About Us</a>
+                <motion.a href='#about' 
+                whileHover={{scale:1.1}} 
+                whileTap={{scale:0.9}}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleCloseMenu();
+                    handleScrollTo('about')
+                }} 
+                className={`text-white ${activeSection === 'about' ? 'isActive' : ''}`}>About Us</motion.a>
             </li>
             <li>
-                <a href='#pricing' className={`text-white ${activeSection === 'pricing' ? 'isActive' : ''}`}>Pricing</a>
+                <motion.a href='#pricing' 
+                whileHover={{scale:1.1}} 
+                whileTap={{scale:0.9}}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleCloseMenu();
+                    handleScrollTo('pricing')
+                }} 
+                className={`text-white ${activeSection === 'pricing' ? 'isActive' : ''}`}>Pricing</motion.a>
             </li>
             <li>
-                <a href='#testimonial' className={`text-white ${activeSection === 'testimonial' ? 'isActive' : ''}`}>Testimonial</a>
+                <motion.a href='#testimonial' 
+                whileHover={{scale:1.1}} 
+                whileTap={{scale:0.9}}
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleCloseMenu();
+                    handleScrollTo('testimonial')
+                }} 
+                className={`text-white ${activeSection === 'testimonial' ? 'isActive' : ''}`}>Testimonial</motion.a>
             </li>
         </ul>
     )
@@ -61,16 +138,21 @@ const Navbar = () => {
 
         {
             isOpen && (
-                <nav className='absolute top-full left-0 w-full bg-heroBg'>
+                <nav className='absolute top-full left-0 w-full bg-heoBg z-20 md:hidden'>
                     <ul className='flex flex-col p-4 space-y-3'>
                         {navLinks.props.children}
-                    </ul>
-                    <li>
+                        <li className='py-2'>
                         <a href='#contact'
                         className='text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded'
-                        onClick={(e) => e.preventDefault()}
+                        onClick={(e) => 
+                            {
+                                e.preventDefault();
+                                handleCloseMenu();
+                            } }
                         >Contact Us</a>
                     </li>
+                    </ul>
+                   
                     
                 </nav>
             )
