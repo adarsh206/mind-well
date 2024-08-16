@@ -16,8 +16,7 @@ const Hero = () => {
                     <a href='#contact' className='flex gap-1 items-center'>
                        <span>Get Started</span> 
                        <IoArrowForwardCircleSharp />
-                    </a>
-                    
+                    </a>    
                 </button>
             </div>
 
