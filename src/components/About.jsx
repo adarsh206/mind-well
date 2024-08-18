@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import thumnailImg from "../assets/video-thumbnail.webp"
-import { IoPlay } from 'react-icons/io5';
+import { IoArrowForwardCircleSharp, IoPlay } from 'react-icons/io5';
 
 const About = () => {
 
@@ -33,18 +33,30 @@ const About = () => {
           }
         </div>
         <div className='md:w-1/2 w-full'>
-          Right Side
+        <h2 className='text-4xl font-secondary font-bold mb-4 leading-snug text-orange-600'>Individual Consult And Therapy</h2>
+                <p className='text-lg mb-12 md:pr-8'>We lower our stress levels, we get to know our pain, we connect better , we improve our focus, and we are kinder to
+                    ourselves. Let us walk you through our basics in our new mindful guide on how to meditate.
+                </p>
+                <button className='bg-orange-600 text-white py-3.5 px-8 font-medium rounded-md hover:bg-orange-700'>
+                    <a href='#contact' className='flex gap-1 items-center'>
+                       <span>Get Started</span> 
+                       <IoArrowForwardCircleSharp />
+                    </a>    
+                </button>
         </div>
         </div>
 
         {
           isVideoPlaying && (
-            <div>
+            <div className='fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50'>
+              <div className='relative w-full h-full flex items-center justify-center'>
               <iframe width="560" height="315" src="https://www.youtube.com/embed/AOHT-YiOeQA?si=TcfO6rDEQomtgodh?autoplay=1" 
               title="YouTube video player" frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-               allowfullscreen className='rounded-lg ml-36'>
+               allowfullscreen className='rounded-lg md:ml-28'>
               </iframe>
+              <button onClick={handleCloseVideo} className='absolute top-4 right-4 text-rose-600 font-extrabold text-4xl cursor-pointer'>X</button>
+            </div>
             </div>
           )
         }

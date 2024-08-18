@@ -125,7 +125,10 @@ const Navbar = () => {
             </div>
 
             <div className='hidden md:block'>
-                <a href='#contact' className='text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded'>Contact Us</a>
+                <a onClick={e => {
+                    e.preventDefault();
+                    handleScrollTo('contact');
+                }} href='#contact' className='text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded'>Contact Us</a>
             </div>
             <div className='block md:hidden'>
                 <button onClick={handleToggle}
@@ -148,6 +151,7 @@ const Navbar = () => {
                             {
                                 e.preventDefault();
                                 handleCloseMenu();
+                                handleScrollTo('contact');
                             } }
                         >Contact Us</a>
                     </li>
