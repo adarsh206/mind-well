@@ -10,6 +10,13 @@ Build an Mental wellness website using ReactJs, Tailwind CSS & Framer Motion.
 
 ![screencapture-localhost-5173-2024-08-19-13_59_16](https://github.com/user-attachments/assets/a381d9e9-9a5c-4787-a7d0-c9271d3b2a9c)
 
+# How To use this project
+
+1. first download the repository into your local system.
+2. then open in any code editor like vscode.
+3. then install all the dependencies present in package.json file.
+4. then run on any browser like chrome it will start running your project.
+
 
 # React + Vite
 
