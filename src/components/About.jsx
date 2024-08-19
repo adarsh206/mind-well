@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import thumnailImg from "../assets/video-thumbnail.webp"
 import { IoArrowForwardCircleSharp, IoPlay } from 'react-icons/io5';
+import { motion } from 'framer-motion';
+import { fadeIn } from '../utils/animationVariants';
 
 const About = () => {
 
@@ -17,7 +19,12 @@ const About = () => {
 
   return (
     <div id='about' className='bg-[#f7f8fc] pb-16 pt-20'>
-      <div className='container mx-auto'>
+      <motion.div 
+       variants={fadeIn('down', 0.2)}
+       initial="hidden"
+       whileInView={"show"}
+       viewport={{once: false, amount: 0.7}}
+      className='container mx-auto'>
         <div className='py-12 px-4 md:w-4/5 mx-auto flex flex-col md:flex-row items-center gap-8'>
         <div className='md:w-1/2 w-full mb-8 md:mb-0'>
           {
@@ -33,7 +40,8 @@ const About = () => {
           }
         </div>
         <div className='md:w-1/2 w-full'>
-        <h2 className='text-4xl font-secondary font-bold mb-4 leading-snug text-orange-600'>Individual Consult And Therapy</h2>
+        <h2 className='text-4xl font-secondary font-bold mb-4 leading-snug 
+        bg-gradient-to-r from-green-600 via-amber-500 to-pink-600 text-transparent bg-clip-text'>Individual Consult And Therapy</h2>
                 <p className='text-lg mb-12 md:pr-8'>We lower our stress levels, we get to know our pain, we connect better , we improve our focus, and we are kinder to
                     ourselves. Let us walk you through our basics in our new mindful guide on how to meditate.
                 </p>
@@ -61,7 +69,7 @@ const About = () => {
           )
         }
         
-      </div>
+      </motion.div>
     </div>
   )
 }

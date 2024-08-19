@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { motion } from 'framer-motion';
+import { fadeIn } from '../utils/animationVariants';
 
 const WorkingStep = () => {
   return (
@@ -7,9 +9,15 @@ const WorkingStep = () => {
          <div className='absolute inset-0 bg-heoBg bg-opacity-85'>
 
          </div>
-         <div className='relative container mx-auto px-4 py-20'>
+         <motion.div 
+          variants={fadeIn('up', 0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{once: false, amount: 0.7}}
+         className='relative container mx-auto px-4 py-20'>
             <div className='text-white text-center mb-20'>
-                <h2 className='text-4xl font-bold font-secondary mb-4 text-rose-700'>How It works</h2>
+                <h2 className='text-4xl font-bold font-secondary mb-4 bg-gradient-to-r 
+                from-green-600 via-amber-500 to-pink-600 text-transparent bg-clip-text'>How It works</h2>
                 <p className='text-lg md:w-1/2 w-full mx-auto'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum voluptatibus aspernatur dignissimos natus rem officia 
                     ratione at quam dicta
                      a aperiam autem debitis soluta, sit perferendis. Delectus id perferendis nisi.
@@ -47,7 +55,7 @@ const WorkingStep = () => {
                 
             </div>
 
-         </div>
+         </motion.div>
     </div>
   )
 }

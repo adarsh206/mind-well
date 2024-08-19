@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import { motion } from 'framer-motion';
+import { fadeIn } from '../utils/animationVariants';
 
 const packages = [
   {
@@ -49,9 +51,14 @@ const Pricing = () => {
   }
   return (
    <div className='bg-[#f7f8fc] pt-32' id='pricing'>
-    <div className='container mx-auto px-8'>
+    <motion.div 
+     variants={fadeIn('down', 0.2)}
+     initial="hidden"
+     whileInView={"show"}
+     viewport={{once: false, amount: 0.7}}
+    className='container mx-auto px-8'>
       <div className='text-center mb-12'>
-        <h2 className='text-4xl font-bold font-secondary mb-3 text-orange-600'>Perfect for Small & Large Brands</h2>
+        <h2 className='text-4xl font-bold font-secondary mb-3 bg-gradient-to-r from-green-600 via-amber-500 to-pink-600 text-transparent bg-clip-text'>Perfect for Small & Large Brands</h2>
         <p className='text-lg mb-12 md:w-2/3 mx-auto'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, velit. Aliquam itaque, saepe odit veritatis exercitationem
            laborum repellendus impedit ea odio quos cum quidem possimus dolore, deserunt temporibus veniam repellat.
         </p>
@@ -77,7 +84,7 @@ const Pricing = () => {
           ))
         }
       </div>
-    </div>
+    </motion.div>
    </div>
   )
 }

@@ -1,9 +1,12 @@
 {
   "name": "mind-wellness",
+  "homepage": "https://adarsh206.github.io/mind-well",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",

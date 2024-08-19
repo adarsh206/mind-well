@@ -4,6 +4,8 @@ import React from 'react'
 import { BsFillChatQuoteFill } from 'react-icons/bs';
 import review1 from "../assets/review1.webp";
 import review2 from "../assets/review2.webp";
+import { motion } from 'framer-motion';
+import { fadeIn } from '../utils/animationVariants';
 
 const  testimonials =[
   {
@@ -23,9 +25,15 @@ const  testimonials =[
 const Testimonial = () => {
   return (
     <div id='testimonial' className='bg-[#f7f8fc] py-12'>
-      <div className='container mx-auto pb-20'>
+      <motion.div 
+       variants={fadeIn('down', 0.2)}
+       initial="hidden"
+       whileInView={"show"}
+       viewport={{once: false, amount: 0.7}}
+      className='container mx-auto pb-20'>
         <div className='text-center mb-12'>
-          <h2 className='text-4xl font-bold font-secondary mb-3 text-amber-600'>What Our Clients Say</h2>
+          <h2 className='text-4xl font-bold font-secondary mb-3 bg-gradient-to-r
+           from-green-600 via-amber-500 to-pink-600 text-transparent bg-clip-text'>What Our Clients Say</h2>
           <p className='text-lg mb-12 md:w-2/3 mx-auto'>
           Here from some of our satisfied clients about how our services have positively impacted their lives and well-being.
           </p>
@@ -52,7 +60,7 @@ const Testimonial = () => {
             ))
           }
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
